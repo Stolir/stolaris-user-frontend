@@ -15,11 +15,11 @@ export default defineConfig({
     strictPort: true,
     proxy: {
       "/api": {
-        target: process.env.API_URL,
+        target: "http://localhost:3000",
         changeOrigin: true,
       },
       "/auth": {
-        target: process.env.API_URL,
+        target: "http://localhost:3000",
         bypass: (req) => {
           // Only proxy if path is exactly /auth or starts with /auth/
           if (req.url === "/auth" || req.url.startsWith("/auth/")) {

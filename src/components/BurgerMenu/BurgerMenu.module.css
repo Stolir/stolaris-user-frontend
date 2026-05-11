@@ -1,0 +1,99 @@
+.burgerMenu {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  --bar-width: 24px;
+  --bar-height: 1px;
+  --burger-gap: 5px;
+  --burger-margin: 24px;
+  --bar-color: var(--secondary-background-color);
+  --animation-timing: 200ms ease-in-out;
+  --burger-height: calc(var(--bar-height) * 3 + var(--burger-gap) * 2);
+}
+
+.menuButton {
+  --x-width: calc(var(--burger-height) * 1.41421356237);
+  display: flex;
+  flex-direction: column;
+  gap: var(--burger-gap);
+  width: max-content;
+  position: absolute;
+  top: var(--burger-margin);
+  right: var(--burger-margin);
+  z-index: 3;
+}
+
+.menuButton::after,
+.menuButton::before,
+.menuButton span {
+  content: "";
+  width: var(--bar-width);
+  height: var(--bar-height);
+  background-color: var(--bar-color);
+  transform-origin: left center;
+  transition:
+    opacity var(--animation-timing),
+    width var(--animation-timing),
+    rotate var(--animation-timing),
+    translate var(--animation-timing);
+}
+
+.menuButton span {
+  appearance: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  pointer-events: none;
+}
+
+.menuButton {
+  background: none;
+  border: none;
+}
+
+.menuButton.open::before {
+  rotate: 45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / -2);
+}
+
+.menuButton.open::after {
+  rotate: -45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / 2);
+}
+
+.menuButton.open span {
+  opacity: 0;
+  width: 0;
+}
+
+.sidebar {
+  transition:
+    translate var(--animation-timing),
+    display var(--animation-timing);
+  translate: 100%;
+  padding: 1rem 3rem 1rem 1rem;
+  padding-top: calc(var(--burger-height) + var(--burger-margin) + 2rem);
+  background-color: var(--background-darker);
+  max-width: 10rem;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  min-height: 100vh;
+}
+
+.sidebar ul {
+  flex-direction: column;
+  align-items: flex-start;
+  color: inherit;
+  padding: 0;
+}
+
+.menuButton.open + .sidebar {
+  translate: 0;
+}

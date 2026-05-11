@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { Outlet, useLoaderData } from "react-router";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
+import Navbar from "./components/Navbar/Navbar";
 
 function AppContent() {
   const data = useLoaderData();
@@ -26,6 +27,7 @@ function AppContent() {
 function App() {
   return (
     <AuthProvider>
+      <Navbar />
       <AppContent />
     </AuthProvider>
   );
