@@ -2,7 +2,7 @@
   padding: 1rem 2rem;
   display: flex;
   background-color: var(--background-color);
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .logo {
