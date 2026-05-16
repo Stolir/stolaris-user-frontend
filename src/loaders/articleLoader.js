@@ -1,22 +1,14 @@
-import { getUser } from "@/lib/serverRequests";
-import { redirect } from "react-router";
+import { getArticles, getFeaturedArticle } from "../lib/serverRequests";
 
-export async function articleLoader() {
-  const user = await getUser();
-  if (!user) {
-    throw redirect("/");
+export async function homeArticlesLoader() {
+  const [featuredArticle, articles] = await Promise.all([
+    getFeaturedArticle(),
+    getArticles(),
+  ]);
+
+  if (!featuredArticle || !articles) {
+    throw new Response("Failed to load articles", { status: 500 });
   }
 
-  try {
-    const response = await fetch("/api/author/articles", {
-      credentials: "include",
-    });
-    if (!response.ok) {
-      throw new Response("Unable to get articles", { status: response.status });
-    }
-    const data = await response.json();
-    return data;
-  } catch (err) {
-    throw err;
-  }
+  return { featured: featuredArticle, all: articles };
 }
