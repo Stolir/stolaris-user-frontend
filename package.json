@@ -10,8 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tiptap/extension-code-block-lowlight": "^3.23.4",
+    "@tiptap/extension-highlight": "^3.23.4",
+    "@tiptap/extension-list": "^3.23.4",
+    "@tiptap/extension-subscript": "^3.23.4",
+    "@tiptap/extension-superscript": "^3.23.4",
+    "@tiptap/extension-text-align": "^3.23.4",
+    "@tiptap/extension-typography": "^3.23.4",
+    "@tiptap/html": "^3.23.4",
+    "@tiptap/starter-kit": "^3.23.4",
     "dotenv": "^17.4.2",
     "iconoir-react": "^7.11.0",
+    "lowlight": "^3.3.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-router": "^7.15.0"

@@ -13,6 +13,20 @@ export async function getUser() {
   }
 }
 
+export async function getAuthor(id) {
+  try {
+    const response = await fetch(`/api/user/${id}`);
+    if (!response.ok) {
+      return null;
+    }
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch {
+    return null;
+  }
+}
+
 export async function getFeaturedArticle() {
   try {
     const response = await fetch("/api/articles/featured");
