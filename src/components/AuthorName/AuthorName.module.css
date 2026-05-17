@@ -1,0 +1,18 @@
+.authorName {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: capitalize;
+  font-family: "Newsreader";
+  letter-spacing: 1px;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.dash {
+  border-top: 2px solid var(--secondary-background-color);
+  opacity: 0.3;
+  width: 2rem;
+  font-style: italic;
+  display: inline-block;
+}
