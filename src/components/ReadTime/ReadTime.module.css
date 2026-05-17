@@ -1,0 +1,8 @@
+.readTime {
+  opacity: 0.5;
+  font-size: 0.9em;
+  font-weight: 500;
+  /* padding: 1px; */
+  text-transform: capitalize;
+  text-align: center;
+}
