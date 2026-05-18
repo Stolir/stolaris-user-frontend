@@ -92,6 +92,10 @@ h6 {
   --background-color: #f4ece1;
   --background-darker: #e1d9ce;
   --secondary-background-color: #2c1e1a;
+
+  /* Alert Colors */
+  --alert-error: rgb(124, 37, 37);
+  --alert-success: rgb(37, 102, 46);
 }
 
 body {
