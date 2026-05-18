@@ -48,29 +48,6 @@
   max-width: 800px;
 }
 
-a:last-child {
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  margin-top: 0.3rem;
-}
-
-a:last-child span {
-  display: none;
-  color: var(--primary-variant);
-  width: 15px;
-}
-
-a:last-child:hover {
-  text-decoration: underline var(--primary-variant) 1px;
-  text-underline-offset: 5px;
-}
-
-a:last-child:hover span {
-  display: inline;
-}
-
 @media (max-width: 768px) {
   .featuredArticle {
     font-size: 0.8rem;

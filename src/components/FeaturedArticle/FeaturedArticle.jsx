@@ -6,27 +6,14 @@ import { getAuthor, getUser } from "../../lib/serverRequests";
 import AuthorName from "../AuthorName/AuthorName";
 import ReadTime from "../ReadTime/ReadTime";
 import { ArrowRight, FastArrowRight, LongArrowRightUp } from "iconoir-react";
+import ReadMoreButton from "../ReadMoreButton/ReadMoreButton";
 
 function FeaturedArticle({ article }) {
-  const [author, setAuthor] = useState("Author");
-
-  useEffect(
-    () => async () => {
-      const author = await getAuthor(article.userId);
-      if (author) {
-        setAuthor(author.name);
-      } else {
-        setAuthor("Author");
-      }
-      console.log(author, article.userId);
-    },
-    [article.user],
-  );
-
   const content = article.content.content;
   // Find first paragraph and use it for the description
-  const description = content.find((item) => item.type === "paragraph")
-    .content[0].text;
+  const firstPara = content.find((item) => item.type === "paragraph").content;
+  const description = createArticleHTML(firstPara);
+  console.log(article);
   return (
     <section className={styles.featuredArticle}>
       <hr />
@@ -35,17 +22,16 @@ function FeaturedArticle({ article }) {
         <h1>{article.title}</h1>
       </Link>
       <div className={styles.extraInfo}>
-        <AuthorName author={author} />
-        <span>•</span>
-        <ReadTime time={article.readTime} />
+        <AuthorName author={article.author} />
+        {article.readTime && (
+          <>
+            <span>•</span>
+            <ReadTime time={article.readTime} />
+          </>
+        )}
       </div>
-      <p className={styles.description}>{description}</p>
-      <Link className={styles.readMore} to={`/article/${article.slug}`}>
-        Read More
-        <span>
-          <FastArrowRight />
-        </span>
-      </Link>
+      <p className={styles.description} dangerouslySetInnerHTML={description} />
+      <ReadMoreButton article={article} />
     </section>
   );
 }
