@@ -1,0 +1,25 @@
+.articlesList {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.articlesList hr {
+  margin-bottom: 1rem;
+}
+
+.articlesList > h1 {
+  text-transform: capitalize;
+  font-family: "Newsreader";
+
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--primary-variant);
+}
+
+.articlesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
