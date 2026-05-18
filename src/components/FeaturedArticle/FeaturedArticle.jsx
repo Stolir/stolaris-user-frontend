@@ -31,7 +31,7 @@ function FeaturedArticle({ article }) {
         )}
       </div>
       <p className={styles.description} dangerouslySetInnerHTML={description} />
-      <ReadMoreButton article={article} />
+      <ReadMoreButton link={`/article/${article.slug}`} />
     </section>
   );
 }
