@@ -8,6 +8,7 @@ import { Subscript } from "@tiptap/extension-subscript";
 import { Superscript } from "@tiptap/extension-superscript";
 import { CodeBlockLowlight } from "@tiptap/extension-code-block-lowlight";
 import { all, createLowlight } from "lowlight";
+import DOMPurify from "dompurify";
 
 const lowlight = createLowlight(all);
 
@@ -27,5 +28,7 @@ const extensions = [
 ];
 
 export function createArticleHTML(content) {
-  return generateHTML(content, extensions);
+  const html = generateHTML({ type: "doc", content }, extensions);
+  const cleanHtml = DOMPurify.sanitize(html);
+  return { __html: cleanHtml };
 }
