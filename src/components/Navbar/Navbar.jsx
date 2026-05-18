@@ -1,11 +1,21 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import styles from "./Navbar.module.css";
 import { Menu, User, UserCircle } from "iconoir-react";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import { useAuth } from "../../context/AuthContext";
 
 function NavList() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  async function handleLogout() {
+    await fetch("/auth/logout", {
+      method: "POST",
+      credentials: "include",
+    });
+    logout();
+    navigate("/");
+  }
 
   return (
     <>
@@ -16,9 +26,14 @@ function NavList() {
         <Link to="/contact">CONTACT</Link>
       </li>
       {user ? (
-        <li>
-          <Link to="/profile">PROFILE</Link>
-        </li>
+        <>
+          <li>
+            <Link to="/profile">PROFILE</Link>
+          </li>
+          <li>
+            <button onClick={handleLogout}>LOGOUT</button>
+          </li>
+        </>
       ) : (
         <li>
           <Link to="/login">LOGIN</Link>

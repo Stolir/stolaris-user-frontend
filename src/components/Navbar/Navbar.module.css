@@ -24,12 +24,15 @@
 .navbar ul li {
   position: relative;
 }
-.navbar ul a:hover {
+.navbar ul a:hover,
+.navbar ul button:hover {
   opacity: 1;
 }
 
-.navbar ul a {
+.navbar ul a,
+.navbar ul button {
   text-decoration: none;
+  text-transform: uppercase;
   color: inherit;
   position: relative;
   min-height: 100%;
@@ -37,7 +40,8 @@
   transition: opacity 0.2;
 }
 
-.navbar ul li a::after {
+.navbar ul li a::after,
+.navbar ul li button::after {
   position: absolute;
   width: 0;
   background-color: var(--secondary-background-color);
@@ -48,13 +52,15 @@
   transition: width 0.2s;
 }
 
-.navbar ul li a:hover::after {
+.navbar ul li a:hover::after,
+.navbar ul li button:hover::after {
   width: 100%;
 }
 
 .navbar ul button {
   background: none;
   border: none;
+  padding: 0;
 }
 
 button:hover {
