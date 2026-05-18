@@ -53,3 +53,17 @@ export async function getArticles() {
     return null;
   }
 }
+
+export async function getArticleBySlug(slug, setError) {
+  try {
+    const response = await fetch(`/api/articles/${slug}`);
+    const data = await response.json();
+    if (!response.ok) {
+      setError(data.message);
+      return;
+    }
+    return data;
+  } catch (err) {
+    setError(err);
+  }
+}
