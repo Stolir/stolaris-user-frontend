@@ -109,3 +109,9 @@ body {
   font-family: "Work sans";
   overflow-x: auto;
 }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--background-darker);
+  margin-bottom: 4rem;
+}
