@@ -14,13 +14,18 @@ export async function homeArticlesLoader() {
     throw new Response("Failed to load articles", { status: 500 });
   }
 
+  // remove featured article from all articles to remove duplicates
+  const filteredArticles = articles.filter(
+    (article) => article.id !== featuredArticle.id,
+  );
+
   const [featuredAuthor, ...articleAuthors] = await Promise.all([
     getAuthor(featuredArticle.userId),
-    ...articles.map((article) => getAuthor(article.userId)),
+    ...filteredArticles.map((article) => getAuthor(article.userId)),
   ]);
   console.log(articles);
 
-  const articlesWithAuthors = articles.map((article, i) => ({
+  const articlesWithAuthors = filteredArticles.map((article, i) => ({
     ...article,
     author: articleAuthors[i].name,
   }));
