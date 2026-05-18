@@ -1,0 +1,21 @@
+a.readMore {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+}
+
+a.readMore span {
+  display: none;
+  color: var(--primary-variant);
+  width: 15px;
+}
+
+a.readMore:hover {
+  text-decoration: underline var(--primary-variant) 1px;
+  text-underline-offset: 5px;
+}
+a.readMore:hover span {
+  display: inline;
+}
