@@ -5,6 +5,7 @@ import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import { userLoader } from "./loaders/userLoader";
 import HomePage from "./pages/HomePage/HomePage";
 import { homeArticlesLoader } from "./loaders/articleLoader";
+import ArticlePage from "./pages/ArticlePage/ArticlePage";
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +19,11 @@ export const router = createBrowserRouter([
         index: true,
         element: <HomePage />,
         loader: homeArticlesLoader,
+      },
+
+      {
+        path: "/article/:slug",
+        element: <ArticlePage />,
       },
     ],
   },

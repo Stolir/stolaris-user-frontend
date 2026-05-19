@@ -6,7 +6,6 @@ import FocusTrap from "../FocusTrap/FocusTrap";
 
 function BurgerMenu({ children }) {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(isOpen);
   function toggleMenu() {
     setIsOpen(!isOpen);
   }

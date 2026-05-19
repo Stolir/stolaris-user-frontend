@@ -15,12 +15,6 @@
   text-underline-offset: 5px;
 }
 
-.featuredArticle hr {
-  border: none;
-  border-top: 1px solid var(--background-darker);
-  margin-bottom: 4rem;
-}
-
 .featuredArticle a {
   text-decoration: none;
   color: inherit;
