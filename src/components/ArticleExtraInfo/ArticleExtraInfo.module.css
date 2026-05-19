@@ -1,0 +1,33 @@
+.articleInfo {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+}
+
+.articleInfo {
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.articleInfo h1:first-child {
+  font-size: 2.5em;
+  font-family: "Newsreader";
+  font-weight: 300;
+  text-align: center;
+}
+
+.dateReadTime {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.creationDate {
+  opacity: 0.5;
+  font-size: 0.9em;
+  font-weight: 500;
+  /* padding: 1px; */
+  text-transform: capitalize;
+  text-align: center;
+}

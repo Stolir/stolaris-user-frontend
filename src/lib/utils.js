@@ -16,6 +16,10 @@ export function formatDateLocal(iso) {
   );
 }
 
+export function getDateString(date) {
+  return new Date(date).toDateString().slice(4);
+}
+
 export function getArticleDescription(article) {
   const content = article.content.content;
   // Find first paragraph and use it for the description
