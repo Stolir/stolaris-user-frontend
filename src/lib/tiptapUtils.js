@@ -14,7 +14,6 @@ const lowlight = createLowlight(all);
 
 const extensions = [
   StarterKit.configure({
-    horizontalRule: false,
     codeBlock: false,
   }),
   TextAlign.configure({ types: ["heading", "paragraph"] }),
