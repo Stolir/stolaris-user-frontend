@@ -127,16 +127,12 @@ body::selection {
   background: var(--background-darker);
 }
 
-/* The draggable handle */
 ::-webkit-scrollbar-thumb {
-  background-color: var(--tertiary-color);
-}
-
-::-webkit-scrollbar-thumb:hover {
   background-color: var(--primary-variant);
 }
 
-#root {
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-color);
 }
 
 hr {
