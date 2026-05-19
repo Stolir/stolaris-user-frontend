@@ -27,8 +27,10 @@ function AppContent() {
 function App() {
   return (
     <AuthProvider>
-      <Navbar />
-      <AppContent />
+      <div className="pageContainer">
+        <Navbar />
+        <AppContent />
+      </div>
     </AuthProvider>
   );
 }
