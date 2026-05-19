@@ -21,3 +21,9 @@
   text-decoration: none;
   color: inherit;
 }
+
+@media (max-width: 768px) {
+  .articleCard {
+    font-size: 0.8rem;
+  }
+}
