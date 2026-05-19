@@ -20,7 +20,6 @@ export async function getAuthor(id) {
       return null;
     }
     const data = await response.json();
-    console.log(data);
     return data;
   } catch {
     return null;
@@ -62,7 +61,8 @@ export async function getArticleBySlug(slug, setError) {
       setError(data.message);
       return;
     }
-    return data;
+    const author = await getAuthor(data.userId);
+    return { ...data, author: author.name };
   } catch (err) {
     setError(err);
   }
