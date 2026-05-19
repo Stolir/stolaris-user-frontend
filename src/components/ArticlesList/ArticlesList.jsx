@@ -8,7 +8,7 @@ function ArticlesList({ articles }) {
       <h1>All Articles</h1>
       <div className={styles.articlesContainer}>
         {articles.map((article) => (
-          <ArticleCard article={article} />
+          <ArticleCard key={article.id} article={article} />
         ))}
       </div>
     </section>
