@@ -19,19 +19,8 @@ export async function homeArticlesLoader() {
     (article) => article.id !== featuredArticle.id,
   );
 
-  const [featuredAuthor, ...articleAuthors] = await Promise.all([
-    getAuthor(featuredArticle.userId),
-    ...filteredArticles.map((article) => getAuthor(article.userId)),
-  ]);
-  console.log(articles);
-
-  const articlesWithAuthors = filteredArticles.map((article, i) => ({
-    ...article,
-    author: articleAuthors[i].name,
-  }));
-
   return {
-    featured: { ...featuredArticle, author: featuredAuthor.name },
-    all: articlesWithAuthors,
+    featured: featuredArticle,
+    all: filteredArticles,
   };
 }

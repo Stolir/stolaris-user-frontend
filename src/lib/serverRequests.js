@@ -61,8 +61,7 @@ export async function getArticleBySlug(slug, setError) {
       setError(data.message);
       return;
     }
-    const author = await getAuthor(data.userId);
-    return { ...data, author: author.name };
+    return data;
   } catch (err) {
     setError(err);
   }
