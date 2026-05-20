@@ -67,3 +67,16 @@ export async function getArticleBySlug(slug, setError) {
     setError(err);
   }
 }
+
+export async function getArticleComments(articleId, setError) {
+  try {
+    const response = await fetch(`/api/articles/${articleId}/comments`);
+    const data = await response.json();
+    if (!response.ok) {
+      setError(data);
+    }
+    return data;
+  } catch (err) {
+    setError(err);
+  }
+}
