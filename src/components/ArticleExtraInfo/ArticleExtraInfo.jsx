@@ -13,7 +13,7 @@ function ArticleExtraInfo({ article }) {
         <span style={{ opacity: 0.5 }}>•</span>
         <ReadTime time={article.readTime} />
       </div>
-      <AuthorName author={article.author} extraDash={true} />
+      <AuthorName author={article.user.name} extraDash={true} />
     </div>
   );
 }

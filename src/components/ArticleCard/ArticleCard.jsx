@@ -1,6 +1,5 @@
 import { Link } from "react-router";
 import { getArticleDescription } from "../../lib/utils";
-import AuthorName from "../AuthorName/AuthorName";
 import ReadTime from "../ReadTime/ReadTime";
 import styles from "./ArticleCard.module.css";
 import ReadMoreButton from "../ReadMoreButton/ReadMoreButton";

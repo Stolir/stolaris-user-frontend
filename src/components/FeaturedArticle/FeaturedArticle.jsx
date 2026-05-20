@@ -2,7 +2,6 @@ import { Link } from "react-router";
 import { createArticleHTML } from "../../lib/tiptapUtils";
 import styles from "./FeaturedArticle.module.css";
 import { useEffect, useState } from "react";
-import { getAuthor, getUser } from "../../lib/serverRequests";
 import AuthorName from "../AuthorName/AuthorName";
 import ReadTime from "../ReadTime/ReadTime";
 import { ArrowRight, FastArrowRight, LongArrowRightUp } from "iconoir-react";
@@ -13,7 +12,6 @@ function FeaturedArticle({ article }) {
   // Find first paragraph and use it for the description
   const firstPara = content.find((item) => item.type === "paragraph").content;
   const description = createArticleHTML(firstPara);
-  console.log(article);
   return (
     <section className={styles.featuredArticle}>
       <hr />
@@ -22,7 +20,7 @@ function FeaturedArticle({ article }) {
         <h1>{article.title}</h1>
       </Link>
       <div className={styles.extraInfo}>
-        <AuthorName author={article.author} />
+        <AuthorName author={article.user.name} />
         {article.readTime && (
           <>
             <span>•</span>
