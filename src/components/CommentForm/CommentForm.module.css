@@ -1,0 +1,22 @@
+.commentForm > div {
+  font-size: 1rem;
+}
+
+.commentForm {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.commentContentEditable {
+  font-family: "Newsreader", "Work Sans", sans-serif;
+}
+
+.placeHolder {
+  position: absolute;
+  font-family: "Newsreader", "Work Sans", sans-serif;
+
+  color: gray;
+  top: 13px;
+  left: 12px;
+}
