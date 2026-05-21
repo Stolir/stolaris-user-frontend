@@ -15,6 +15,14 @@ import CustomButton from "../CustomButton/CustomButton";
 function CommentForm({ onPostComment }) {
   const editorRef = useRef(null);
 
+  async function handlePost() {
+    const content = editorRef?.current.getMarkdown();
+    const posted = await onPostComment(content);
+    if (posted) {
+      editorRef?.current.setMarkdown("");
+    }
+  }
+
   return (
     <form className={styles.commentForm}>
       <MDXEditor
@@ -30,7 +38,7 @@ function CommentForm({ onPostComment }) {
           markdownShortcutPlugin(),
         ]}
       />
-      <CustomButton text={"publish"} onClick={onPostComment} />
+      <CustomButton text={"publish"} onClick={handlePost} />
     </form>
   );
 }
