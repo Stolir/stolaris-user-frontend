@@ -8,6 +8,7 @@ import { createArticleHTML } from "../../lib/tiptapUtils";
 import AuthorName from "../../components/AuthorName/AuthorName";
 import ReadTime from "../../components/ReadTime/ReadTime";
 import ArticleExtraInfo from "../../components/ArticleExtraInfo/ArticleExtraInfo";
+import CommentSection from "../../components/CommentSection/CommentSection";
 
 function ArticlePage() {
   const navigate = useNavigate();
@@ -72,6 +73,8 @@ function ArticlePage() {
       <article className={styles.articleContainer}>
         <div dangerouslySetInnerHTML={{ __html: articleHTML }}></div>
       </article>
+      <hr />
+      <CommentSection articleId={article.id} />
     </section>
   );
 }
