@@ -1,0 +1,19 @@
+.customButton {
+  background-color: var(--secondary-background-color);
+  border: none;
+  color: white;
+  padding: 0.3rem 3em;
+  text-align: center;
+  text-transform: capitalize;
+  font-family: "Work Sans", sans-serif;
+  letter-spacing: 1px;
+  font-size: 0.9em;
+
+  margin-top: 1rem;
+  align-self: flex-end;
+}
+
+.customButton:hover {
+  background-color: var(--primary-variant);
+  color: white;
+}
