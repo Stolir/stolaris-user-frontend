@@ -56,14 +56,14 @@ export async function getArticles() {
 export async function getArticleBySlug(slug, setError) {
   try {
     const response = await fetch(`/api/articles/${slug}`);
-    const data = await response.json();
+    const data = await response?.json();
     if (!response.ok) {
       setError(data.message);
       return;
     }
     return data;
-  } catch (err) {
-    setError(err);
+  } catch {
+    setError("A Network Error Occurred. Please try again later");
   }
 }
 
@@ -73,9 +73,42 @@ export async function getArticleComments(articleId, setError) {
     const data = await response.json();
     if (!response.ok) {
       setError(data);
+      return;
     }
     return data;
-  } catch (err) {
-    setError(err);
+  } catch {
+    setError("A Network Error Occurred. Please try again later");
+  }
+}
+
+export async function postComment(
+  content,
+  parentId = null,
+  articleId,
+  setError,
+  setFieldErrors,
+) {
+  try {
+    const response = await fetch(`/api/articles/${articleId}/comments`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        comment: content,
+        parentId,
+      }),
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      if (data.errors) {
+        setError(data.errors.map((err) => err.msg));
+      } else {
+        setError(data.message);
+      }
+      return;
+    }
+    return data;
+  } catch {
+    setError("A Network Error Occurred. Please try again later");
   }
 }
