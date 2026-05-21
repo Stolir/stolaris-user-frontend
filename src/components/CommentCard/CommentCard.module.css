@@ -1,0 +1,20 @@
+.commentCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.commentInformation {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  align-items: center;
+}
+
+.commentInformation p:first-child {
+  font-weight: 700;
+}
+
+.commentInformation p:last-child {
+  color: grey;
+  font-weight: 400;
+}
