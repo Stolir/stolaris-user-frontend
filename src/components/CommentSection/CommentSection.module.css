@@ -1,0 +1,25 @@
+.commentSection {
+  font-size: 1em;
+  display: flex;
+  justify-content: center;
+  font-family: "Newsreader", "Work Sans", sans-serif;
+}
+
+.commentSection > div > h1 {
+  font-family: "Newsreader", "Work Sans", sans-serif;
+  font-size: 2em;
+  font-weight: 400;
+}
+
+.commentSection > div {
+  max-width: 650px;
+  width: 100%;
+  font-size: inherit;
+}
+
+.commentsContainer {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
