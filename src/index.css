@@ -104,6 +104,10 @@ h6 {
   /* Alert Colors */
   --alert-error: rgb(124, 37, 37);
   --alert-success: rgb(37, 102, 46);
+
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
 }
 
 body {
@@ -148,3 +152,16 @@ hr {
 /* .mdxeditor-root-contenteditable > div:has(p:empty) {
   display: none;
 } */
+
+code {
+  background-color: rgb(240, 234, 234);
+  padding: 1px 0.25rem;
+  font-size: 94%;
+  font-family: var(--font-mono);
+}
+
+.pageContainer code > span {
+  padding: 0;
+  background: none;
+  font-size: 100%;
+}
