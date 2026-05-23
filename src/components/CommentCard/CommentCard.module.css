@@ -18,3 +18,21 @@
   color: grey;
   font-weight: 400;
 }
+
+.replyButton {
+  background: none;
+  border: none;
+}
+
+.replyButton > svg {
+  width: 18px;
+}
+
+.replyButton:hover {
+  color: var(--primary-variant);
+}
+
+.repliesContainer {
+  padding-left: 1rem;
+  border-left: 1px solid black;
+}

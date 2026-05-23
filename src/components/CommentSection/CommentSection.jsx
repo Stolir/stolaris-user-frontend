@@ -8,6 +8,17 @@ import CommentCard from "../CommentCard/CommentCard";
 function CommentSection({ articleId }) {
   const [comments, setComments] = useState([]);
   const [error, setError] = useState(null);
+  const [replyingTo, setReplyingTo] = useState(null);
+
+  function toggleReplyBox(commentId) {
+    if (replyingTo === commentId) {
+      setReplyingTo(null);
+    } else {
+      setReplyingTo(commentId);
+    }
+    console.log(replyingTo, commentId);
+  }
+  // console.log("COMMENTS: ", comments);
 
   useEffect(() => {
     if (articleId) {
@@ -51,7 +62,14 @@ function CommentSection({ articleId }) {
           {comments.length > 0 && (
             <div className={styles.commentsContainer}>
               {comments.map((comment) => (
-                <CommentCard key={comment.id} comment={comment} />
+                <div key={comment.id}>
+                  <CommentCard
+                    comment={comment}
+                    handleClick={toggleReplyBox}
+                    replyingTo={replyingTo}
+                    onPostReply={handlePostComment}
+                  />
+                </div>
               ))}
             </div>
           )}

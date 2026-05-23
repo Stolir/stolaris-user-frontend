@@ -12,12 +12,12 @@ import "@mdxeditor/editor/style.css";
 import { useRef } from "react";
 import CustomButton from "../CustomButton/CustomButton";
 
-function CommentForm({ onPostComment }) {
+function CommentForm({ onPostComment, parentId = null }) {
   const editorRef = useRef(null);
 
   async function handlePost() {
     const content = editorRef?.current.getMarkdown();
-    const posted = await onPostComment(content);
+    const posted = await onPostComment(content, parentId);
     if (posted) {
       editorRef?.current.setMarkdown("");
     }

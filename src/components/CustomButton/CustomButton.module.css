@@ -2,12 +2,12 @@
   background-color: var(--secondary-background-color);
   border: none;
   color: white;
-  padding: 0.3rem 3em;
+  padding: 0.3rem 1rem;
   text-align: center;
   text-transform: capitalize;
   font-family: "Work Sans", sans-serif;
   letter-spacing: 1px;
-  font-size: 0.9em;
+  font-size: 0.8em;
 
   margin-top: 1rem;
   align-self: flex-end;
