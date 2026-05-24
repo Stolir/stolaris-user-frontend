@@ -20,7 +20,9 @@ function CommentCard({ comment, handleClick, replyingTo, onPostReply }) {
       </button>
       {comment.id === replyingTo && (
         <>
-          <p>replying to {comment.user || "Anonymous"}</p>
+          <p className={styles.replyingText}>
+            replying to <span>{comment.user || "Anonymous"}</span>
+          </p>
           <CommentForm parentId={comment.id} onPostComment={onPostReply} />
         </>
       )}
