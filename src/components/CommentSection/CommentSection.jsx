@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CommentForm from "../CommentForm/CommentForm";
 import styles from "./CommentSection.module.css";
 import { getArticleComments, postComment } from "../../lib/serverRequests";
 import AlertBox from "../AlertBox/AlertBox";
 import CommentCard from "../CommentCard/CommentCard";
+import { buildCommentsTree } from "../../lib/utils";
 
 function CommentSection({ articleId }) {
   const [comments, setComments] = useState([]);
@@ -18,7 +19,6 @@ function CommentSection({ articleId }) {
     }
     console.log(replyingTo, commentId);
   }
-  // console.log("COMMENTS: ", comments);
 
   useEffect(() => {
     if (articleId) {
@@ -38,10 +38,20 @@ function CommentSection({ articleId }) {
     const comment = await postComment(content, parentId, articleId, setError);
     if (comment) {
       setComments((prev) => [...prev, comment]);
+      setReplyingTo(null);
       return true;
     }
+    setError("An error occurred");
     return false;
   }
+
+  const commentsTree = useMemo(() => {
+    if (comments.length > 0) {
+      return buildCommentsTree(comments);
+    } else {
+      return [];
+    }
+  }, [comments]);
 
   return (
     <>
@@ -59,9 +69,9 @@ function CommentSection({ articleId }) {
         <div>
           <h1>Comments</h1>
           <CommentForm onPostComment={handlePostComment} />
-          {comments.length > 0 && (
+          {commentsTree.length > 0 && (
             <div className={styles.commentsContainer}>
-              {comments.map((comment) => (
+              {commentsTree.map((comment) => (
                 <div key={comment.id}>
                   <CommentCard
                     comment={comment}
