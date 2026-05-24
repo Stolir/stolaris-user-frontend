@@ -67,7 +67,6 @@ function ArticlePage() {
 
   return (
     <section className={styles.articleSection}>
-      <hr />
       <ArticleExtraInfo article={article} />
       <hr />
       <article className={styles.articleContainer}>

@@ -14,7 +14,6 @@ function FeaturedArticle({ article }) {
   const description = createArticleHTML(firstPara);
   return (
     <section className={styles.featuredArticle}>
-      <hr />
       <p className={styles.sectionName}>Featured Article</p>
       <Link to={`/article/${article.slug}`}>
         <h1>{article.title}</h1>

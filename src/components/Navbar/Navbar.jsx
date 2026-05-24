@@ -45,21 +45,24 @@ function NavList() {
 
 function Navbar() {
   return (
-    <header className={styles.navbar}>
-      <Link className={styles.logo} to="/">
-        STOLARIS
-      </Link>
-      <nav aria-label="Main Navigation" className={styles.navbarContent}>
-        <ul>
-          <NavList />
-        </ul>
-      </nav>
-      <div className={styles.menuToggle}>
-        <BurgerMenu>
-          <NavList />
-        </BurgerMenu>
-      </div>
-    </header>
+    <>
+      <header className={styles.navbar}>
+        <Link className={styles.logo} to="/">
+          STOLARIS
+        </Link>
+        <nav aria-label="Main Navigation" className={styles.navbarContent}>
+          <ul>
+            <NavList />
+          </ul>
+        </nav>
+        <div className={styles.menuToggle}>
+          <BurgerMenu>
+            <NavList />
+          </BurgerMenu>
+        </div>
+      </header>
+      <hr />
+    </>
   );
 }
 
