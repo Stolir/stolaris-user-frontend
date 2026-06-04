@@ -1,0 +1,10 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.formContainer a {
+  color: var(--primary-color);
+}

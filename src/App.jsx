@@ -8,6 +8,7 @@ function AppContent() {
   const data = useLoaderData();
   const { login, loading, setLoading, user } = useAuth();
   useEffect(() => {
+    console.log(data);
     if (data.user) {
       login(data.user);
     } else {
@@ -17,11 +18,7 @@ function AppContent() {
 
   if (loading) return <LoadingSpinner />;
 
-  return (
-    <AuthProvider>
-      <Outlet />
-    </AuthProvider>
-  );
+  return <Outlet />;
 }
 
 function App() {

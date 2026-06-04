@@ -6,6 +6,7 @@ import { userLoader } from "./loaders/userLoader";
 import HomePage from "./pages/HomePage/HomePage";
 import { homeArticlesLoader } from "./loaders/articleLoader";
 import ArticlePage from "./pages/ArticlePage/ArticlePage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 export const router = createBrowserRouter([
   {
@@ -20,10 +21,13 @@ export const router = createBrowserRouter([
         element: <HomePage />,
         loader: homeArticlesLoader,
       },
-
       {
         path: "/article/:slug",
         element: <ArticlePage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
       },
     ],
   },
