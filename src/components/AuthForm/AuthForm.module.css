@@ -1,0 +1,20 @@
+.authForm {
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.authForm button {
+  background-color: black;
+  padding: 0.5rem;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.authForm button:hover {
+  background-color: var(--primary-variant);
+}
