@@ -8,7 +8,7 @@ function CommentCard({ comment, handleClick, replyingTo, onPostReply }) {
   return (
     <article className={styles.commentCard}>
       <div className={styles.commentInformation}>
-        <p>{comment.user || "Anonymous"}</p>{" "}
+        <p>{comment.user?.username || "Anonymous"}</p>{" "}
         <p>{getDateString(comment.createdAt)}</p>
       </div>
       <Markdown>{comment.content}</Markdown>
@@ -21,7 +21,7 @@ function CommentCard({ comment, handleClick, replyingTo, onPostReply }) {
       {comment.id === replyingTo && (
         <>
           <p className={styles.replyingText}>
-            replying to <span>{comment.user || "Anonymous"}</span>
+            replying to <span>{comment.user?.username || "Anonymous"}</span>
           </p>
           <CommentForm parentId={comment.id} onPostComment={onPostReply} />
         </>
