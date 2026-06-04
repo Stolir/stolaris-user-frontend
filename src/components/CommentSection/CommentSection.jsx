@@ -17,7 +17,6 @@ function CommentSection({ articleId }) {
     } else {
       setReplyingTo(commentId);
     }
-    console.log(replyingTo, commentId);
   }
 
   useEffect(() => {
@@ -37,7 +36,7 @@ function CommentSection({ articleId }) {
   async function handlePostComment(content, parentId = null) {
     const comment = await postComment(content, parentId, articleId, setError);
     if (comment) {
-      setComments((prev) => [...prev, comment]);
+      setComments((prev) => [comment, ...prev]);
       setReplyingTo(null);
       return true;
     }
