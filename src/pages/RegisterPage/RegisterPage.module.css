@@ -1,0 +1,23 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.formContainer a {
+  color: var(--primary-color);
+}
+
+.usernameSuccess,
+.usernameFail {
+  font-size: 0.65rem;
+}
+
+.usernameFail {
+  color: rgb(143, 36, 36);
+}
+
+.usernameSuccess {
+  color: rgb(40, 105, 40);
+}

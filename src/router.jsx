@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import { homeArticlesLoader } from "./loaders/articleLoader";
 import ArticlePage from "./pages/ArticlePage/ArticlePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <LoginPage />,
+      },
+      {
+        path: "/register",
+        element: <RegisterPage />,
       },
     ],
   },
