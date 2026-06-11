@@ -7,6 +7,7 @@ import { useAuth } from "../../context/AuthContext";
 import { deleteComment } from "../../lib/serverRequests";
 import { useState } from "react";
 import AlertBox from "../AlertBox/AlertBox";
+import ConfirmPopup from "../ConfirmPopup/ConfirmPopup";
 
 function CommentCard({
   comment,
@@ -16,11 +17,11 @@ function CommentCard({
   removeComment,
 }) {
   const [error, setError] = useState(null);
+  const [showConfirm, setShowConfirm] = useState(false);
   const { user } = useAuth();
 
   async function handleDeleteComment(id) {
     const isDeleted = await deleteComment(id, setError);
-    console.log(isDeleted, removeComment);
     if (isDeleted) {
       removeComment(id);
     }
@@ -33,6 +34,22 @@ function CommentCard({
           {error}
         </AlertBox>
       )}
+
+      {showConfirm && (
+        <ConfirmPopup
+          isOpen={true}
+          onClose={() => {
+            setShowConfirm(false);
+          }}
+          onConfirm={() => {
+            handleDeleteComment(comment.id);
+          }}
+        >
+          Are you sure you want to delete this comment? This action cannot be
+          undone.
+        </ConfirmPopup>
+      )}
+
       <article className={styles.commentCard}>
         <div className={styles.commentInformation}>
           <p>{comment.user?.username || "Anonymous"}</p>
@@ -48,10 +65,10 @@ function CommentCard({
               <Reply />
             </button>
           )}
-          {comment.userId === user.id && (
+          {user?.id && comment.userId === user.id && (
             <button
               onClick={() => {
-                handleDeleteComment(comment.id);
+                setShowConfirm(true);
               }}
               className={styles.replyButton}
             >
@@ -76,6 +93,7 @@ function CommentCard({
                 handleClick={handleClick}
                 replyingTo={replyingTo}
                 onPostReply={onPostReply}
+                removeComment={removeComment}
               />
             ))}
           </div>
