@@ -5,6 +5,7 @@ import Markdown from "react-markdown";
 import CommentForm from "../CommentForm/CommentForm";
 
 function CommentCard({ comment, handleClick, replyingTo, onPostReply }) {
+  console.log(comment);
   return (
     <article className={styles.commentCard}>
       <div className={styles.commentInformation}>
@@ -12,12 +13,14 @@ function CommentCard({ comment, handleClick, replyingTo, onPostReply }) {
         <p>{getDateString(comment.createdAt)}</p>
       </div>
       <Markdown>{comment.content}</Markdown>
-      <button
-        onClick={() => handleClick(comment.id)}
-        className={styles.replyButton}
-      >
-        <Reply />
-      </button>
+      {handleClick && (
+        <button
+          onClick={() => handleClick(comment.id)}
+          className={styles.replyButton}
+        >
+          <Reply />
+        </button>
+      )}
       {comment.id === replyingTo && (
         <>
           <p className={styles.replyingText}>
