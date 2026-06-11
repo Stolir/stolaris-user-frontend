@@ -11,6 +11,7 @@ function FocusTrap({ children, isOpen, onClose, focusOnCloseRef }) {
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
       );
       const firstElement = focusableElements[0];
+      firstElement.focus();
       const lastElement = focusableElements[focusableElements.length - 1];
       // By default when closing the focus-trapped element, focus will return to the
       // first element. You may pass a ref to another element if you wish focus to be
