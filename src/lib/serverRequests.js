@@ -141,3 +141,17 @@ export async function checkUsername(username, setError, setFieldErrors) {
     setError("An error occurred.");
   }
 }
+
+export async function getUserComments(userId, setError) {
+  try {
+    const response = await fetch(`/api/users/${userId}/comments`);
+    const data = await response.json();
+    if (!response.ok) {
+      setError(data);
+      return;
+    }
+    return data;
+  } catch {
+    setError("Unable to get user comments. Please try again later");
+  }
+}
