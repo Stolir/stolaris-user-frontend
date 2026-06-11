@@ -15,7 +15,7 @@ export async function getUser() {
 
 export async function getAuthor(id) {
   try {
-    const response = await fetch(`/api/user/${id}`);
+    const response = await fetch(`/api/users/${id}`);
     if (!response.ok) {
       return null;
     }
@@ -110,5 +110,34 @@ export async function postComment(
     return data;
   } catch {
     setError("A Network Error Occurred. Please try again later");
+  }
+}
+
+export async function checkUsername(username, setError, setFieldErrors) {
+  setFieldErrors((prev) => ({ ...prev, username: null }));
+  try {
+    const response = await fetch("/api/users/username-attempt", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username,
+      }),
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      if (data.errors) {
+        const mappedErrors = {};
+        data.errors.forEach((err) => {
+          mappedErrors[err.path] = err.msg;
+        });
+        setFieldErrors(mappedErrors);
+      } else {
+        setError(data.message);
+      }
+      return;
+    }
+    return data.available;
+  } catch {
+    setError("An error occurred.");
   }
 }
