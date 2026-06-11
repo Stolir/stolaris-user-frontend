@@ -27,11 +27,13 @@
   align-self: flex-start;
 }
 
-.replyButton > svg {
+.replyButton > svg,
+.deleteButton > svg {
   width: 18px;
 }
 
-.replyButton:hover {
+.replyButton:hover,
+.deleteButton:hover {
   color: var(--primary-variant);
 }
 
@@ -51,4 +53,9 @@ p.replyingText {
 
 p.replyingText > span {
   color: var(--primary-variant);
+}
+
+.controlsContainer {
+  display: flex;
+  gap: 1rem;
 }

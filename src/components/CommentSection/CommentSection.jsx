@@ -19,6 +19,10 @@ function CommentSection({ articleId }) {
     }
   }
 
+  function removeComment(id) {
+    setComments((prev) => prev.filter((comment) => comment.id !== id));
+  }
+
   useEffect(() => {
     if (articleId) {
       let ignored = false;
@@ -77,6 +81,7 @@ function CommentSection({ articleId }) {
                     handleClick={toggleReplyBox}
                     replyingTo={replyingTo}
                     onPostReply={handlePostComment}
+                    removeComment={removeComment}
                   />
                 </div>
               ))}

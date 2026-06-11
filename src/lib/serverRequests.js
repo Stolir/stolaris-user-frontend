@@ -155,3 +155,20 @@ export async function getUserComments(userId, setError) {
     setError("Unable to get user comments. Please try again later");
   }
 }
+
+export async function deleteComment(commentId, setError) {
+  try {
+    const response = await fetch(`/api/comments/${commentId}`, {
+      method: "DELETE",
+      credentials: "include",
+    });
+    if (!response.ok) {
+      const data = await response.json();
+      setError(data);
+      return;
+    }
+    return true;
+  } catch {
+    setError("Unable to delete comment. Try again later.");
+  }
+}
