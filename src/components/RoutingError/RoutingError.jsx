@@ -3,7 +3,6 @@ import styles from "./RoutingError.module.css";
 
 function RoutingError() {
   const error = useRouteError();
-  console.log(error);
 
   return (
     <div className={styles.routingError}>

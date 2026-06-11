@@ -7,9 +7,7 @@ import Navbar from "./components/Navbar/Navbar";
 function AppContent() {
   const data = useLoaderData();
   const { login, loading, setLoading, user } = useAuth();
-  console.log(user);
   useEffect(() => {
-    console.log(data);
     if (data.user) {
       login(data.user);
     } else {

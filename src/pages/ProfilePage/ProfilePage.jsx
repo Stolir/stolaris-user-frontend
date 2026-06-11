@@ -22,14 +22,14 @@ function ProfilePage() {
   useEffect(() => {
     let ignored = false;
     (async () => {
-      const comments = await getUserComments(user.id, setError);
+      const comments = await getUserComments(user?.id, setError);
       if (comments && !ignored) {
         return setUserComments(comments);
       }
     })();
 
     return () => (ignored = true);
-  }, [user.id]);
+  }, [user?.id]);
 
   function removeComment(id) {
     setUserComments((prev) => prev.filter((comment) => comment.id !== id));
