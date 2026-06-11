@@ -6,6 +6,7 @@ import AlertBox from "../../components/AlertBox/AlertBox";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import AuthForm from "../../components/AuthForm/AuthForm";
 import FormInput from "../../components/FormInput/FormInput";
+import { checkUsername } from "../../lib/serverRequests";
 
 function RegisterPage() {
   const [error, setError] = useState(null);
@@ -16,38 +17,11 @@ function RegisterPage() {
 
   const navigate = useNavigate();
 
-  async function checkUsername(username) {
+  async function handleUsernameOnBlur(username) {
     setUsernameStatus(null);
-    setFieldErrors((prev) => ({ ...prev, username: null }));
-    try {
-      const response = await fetch("/api/user/username-attempt", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username,
-        }),
-      });
-      const data = await response.json();
-      if (!response.ok) {
-        if (data.errors) {
-          const mappedErrors = {};
-          data.errors.forEach((err) => {
-            mappedErrors[err.path] = err.msg;
-          });
-          setFieldErrors(mappedErrors);
-        } else {
-          setError(data.message);
-        }
-        return;
-      }
-      if (data.available) {
-        setUsernameStatus(true);
-      } else {
-        setUsernameStatus(false);
-      }
-    } catch {
-      setError("An error occurred.");
-    }
+    const isAvailable = await checkUsername(username, setError, setFieldErrors);
+    if (isAvailable === true || isAvailable === false)
+      setUsernameStatus(isAvailable);
   }
 
   async function handleSubmit(e) {
@@ -107,7 +81,7 @@ function RegisterPage() {
               label="Username"
               name="username"
               placeholder="stolaris"
-              onBlur={(e) => checkUsername(e.target.value)}
+              onBlur={(e) => handleUsernameOnBlur(e.target.value)}
               isRequired={true}
               error={fieldErrors?.username}
             />
