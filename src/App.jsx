@@ -1,19 +1,25 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { Outlet, useLoaderData } from "react-router";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import Navbar from "./components/Navbar/Navbar";
+import { getUser } from "./lib/serverRequests";
 
 function AppContent() {
-  const data = useLoaderData();
-  const { login, loading, setLoading, user } = useAuth();
+  const { login, logout, loading, setLoading, user } = useAuth();
   useEffect(() => {
-    if (data.user) {
-      login(data.user);
-    } else {
-      setLoading(false);
-    }
-  }, [data]);
+    let ignored = false;
+    (async () => {
+      const user = await getUser();
+      if (ignored) return;
+      if (user) {
+        login(user);
+      } else {
+        logout();
+      }
+    })();
+    return () => (ignored = true);
+  }, [login, logout]);
 
   if (loading) return <LoadingSpinner />;
 

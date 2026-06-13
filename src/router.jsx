@@ -15,7 +15,6 @@ export const router = createBrowserRouter([
     path: "/",
     element: <App />,
     errorElement: <RoutingError />,
-    loader: userLoader,
     HydrateFallback: LoadingSpinner,
     children: [
       {
