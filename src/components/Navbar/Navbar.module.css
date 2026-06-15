@@ -79,6 +79,10 @@ button:hover {
   cursor: pointer;
 }
 
+header > a > span {
+  color: var(--primary-color);
+}
+
 @media (max-width: 550px) {
   .navbar {
     justify-content: space-between;

@@ -48,7 +48,7 @@ function Navbar() {
     <>
       <header className={styles.navbar}>
         <Link className={styles.logo} to="/">
-          STOLARIS
+          AA<span>.</span>
         </Link>
         <nav aria-label="Main Navigation" className={styles.navbarContent}>
           <ul>
