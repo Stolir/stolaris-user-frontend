@@ -14,7 +14,7 @@ function TypewriterQuote({ fullQuote, fullAuthor }) {
     if (quote.length < fullQuote.length) {
       const timeout = setTimeout(() => {
         setQuote(fullQuote.slice(0, quote.length + 1));
-      }, 40);
+      }, 30);
 
       return () => clearTimeout(timeout);
     } else {

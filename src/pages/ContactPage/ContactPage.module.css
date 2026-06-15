@@ -1,0 +1,19 @@
+.contactPage {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 800px;
+}
+
+.contactPage > h1 {
+  font-family: "Newsreader", "Work Sans", sans-serif;
+  font-size: 4em;
+  font-weight: 300;
+}
+
+@media (max-width: 500px) {
+  .contactPage {
+    font-size: 0.8rem;
+  }
+}
