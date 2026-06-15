@@ -33,18 +33,21 @@ function RegisterPage() {
     const formData = new FormData(e.target);
 
     try {
-      const response = await fetch("/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({
-          username: formData.get("username"),
-          name: formData.get("name"),
-          email: formData.get("email"),
-          password: formData.get("password"),
-          confirmPassword: formData.get("confirmPassword"),
-        }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/register`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({
+            username: formData.get("username"),
+            name: formData.get("name"),
+            email: formData.get("email"),
+            password: formData.get("password"),
+            confirmPassword: formData.get("confirmPassword"),
+          }),
+        },
+      );
       const data = await response.json();
       if (!response.ok) {
         if (data.errors) {

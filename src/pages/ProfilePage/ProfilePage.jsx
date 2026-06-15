@@ -78,7 +78,7 @@ function ProfilePage() {
     setFieldErrors({});
     const formData = new FormData(e.target);
     try {
-      const response = await fetch("/auth/me", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/me`, {
         method: "PATCH",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

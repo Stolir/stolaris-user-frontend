@@ -1,6 +1,6 @@
 export async function getUser() {
   try {
-    const response = await fetch("/auth/me", {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/me`, {
       credentials: "include",
     });
     if (!response.ok) {
@@ -15,7 +15,9 @@ export async function getUser() {
 
 export async function getAuthor(id) {
   try {
-    const response = await fetch(`/api/users/${id}`);
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/users/${id}`,
+    );
     if (!response.ok) {
       return null;
     }
@@ -28,7 +30,9 @@ export async function getAuthor(id) {
 
 export async function getFeaturedArticle() {
   try {
-    const response = await fetch("/api/articles/featured");
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/articles/featured`,
+    );
     if (!response.ok) {
       return null;
     }
@@ -42,7 +46,9 @@ export async function getFeaturedArticle() {
 
 export async function getArticles() {
   try {
-    const response = await fetch("/api/articles");
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/articles`,
+    );
     if (!response.ok) {
       return null;
     }
@@ -55,7 +61,9 @@ export async function getArticles() {
 
 export async function getArticleBySlug(slug, setError) {
   try {
-    const response = await fetch(`/api/articles/${slug}`);
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/articles/${slug}`,
+    );
     const data = await response?.json();
     if (!response.ok) {
       setError(data.message);
@@ -69,7 +77,9 @@ export async function getArticleBySlug(slug, setError) {
 
 export async function getArticleComments(articleId, setError) {
   try {
-    const response = await fetch(`/api/articles/${articleId}/comments`);
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/articles/${articleId}/comments`,
+    );
     const data = await response.json();
     if (!response.ok) {
       setError(data);
@@ -89,15 +99,18 @@ export async function postComment(
   setFieldErrors,
 ) {
   try {
-    const response = await fetch(`/api/articles/${articleId}/comments`, {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        comment: content,
-        parentId,
-      }),
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/articles/${articleId}/comments`,
+      {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          comment: content,
+          parentId,
+        }),
+      },
+    );
     const data = await response.json();
     if (!response.ok) {
       if (data.errors) {
@@ -116,13 +129,16 @@ export async function postComment(
 export async function checkUsername(username, setError, setFieldErrors) {
   setFieldErrors((prev) => ({ ...prev, username: null }));
   try {
-    const response = await fetch("/api/users/username-attempt", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username,
-      }),
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/users/username-attempt`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username,
+        }),
+      },
+    );
     const data = await response.json();
     if (!response.ok) {
       if (data.errors) {
@@ -144,7 +160,9 @@ export async function checkUsername(username, setError, setFieldErrors) {
 
 export async function getUserComments(userId, setError) {
   try {
-    const response = await fetch(`/api/users/${userId}/comments`);
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/users/${userId}/comments`,
+    );
     const data = await response.json();
     if (!response.ok) {
       setError(data);
@@ -158,10 +176,13 @@ export async function getUserComments(userId, setError) {
 
 export async function deleteComment(commentId, setError) {
   try {
-    const response = await fetch(`/api/comments/${commentId}`, {
-      method: "DELETE",
-      credentials: "include",
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/comments/${commentId}`,
+      {
+        method: "DELETE",
+        credentials: "include",
+      },
+    );
     if (!response.ok) {
       const data = await response.json();
       setError(data);
