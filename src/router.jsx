@@ -9,6 +9,7 @@ import ArticlePage from "./pages/ArticlePage/ArticlePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import AboutMePage from "./pages/AboutMePage/AboutMePage";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         path: "/profile",
         element: <ProfilePage />,
+      },
+      {
+        path: "/about-me",
+        element: <AboutMePage />,
       },
     ],
   },
