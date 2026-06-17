@@ -14,6 +14,7 @@
 
 .articleContainer > div {
   max-width: 650px;
+  min-width: 0;
 }
 
 .articleContainer hr {
@@ -30,6 +31,20 @@
   h6 {
     margin-bottom: 0.4em;
   }
+}
+
+.articleSection pre {
+  max-width: 100%;
+  overflow-x: auto;
+
+  font-size: 0.8em;
+  margin-bottom: 0.5rem;
+}
+
+.articleSection pre code {
+  color: black;
+  background-color: var(--background-darker);
+  overflow: auto;
 }
 
 @media (max-width: 425px) {

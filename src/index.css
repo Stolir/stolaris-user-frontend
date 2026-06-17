@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
+@import "highlight.js/styles/atom-one-light.css";
 /*  Josh Comeau's CSS reset */
 /* 1. Use a more-intuitive box-sizing model */
 *,
@@ -153,15 +154,9 @@ hr {
   display: none;
 } */
 
-code {
-  background-color: rgb(240, 234, 234);
+:not(pre) > code {
+  background-color: var(--background-darker);
   padding: 1px 0.25rem;
-  font-size: 94%;
+  font-size: 0.8em;
   font-family: var(--font-mono);
-}
-
-.pageContainer code > span {
-  padding: 0;
-  background: none;
-  font-size: 100%;
 }

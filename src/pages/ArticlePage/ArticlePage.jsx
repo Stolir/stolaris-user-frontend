@@ -9,6 +9,7 @@ import AuthorName from "../../components/AuthorName/AuthorName";
 import ReadTime from "../../components/ReadTime/ReadTime";
 import ArticleExtraInfo from "../../components/ArticleExtraInfo/ArticleExtraInfo";
 import CommentSection from "../../components/CommentSection/CommentSection";
+import hljs from "highlight.js";
 
 function ArticlePage() {
   const navigate = useNavigate();
@@ -18,6 +19,8 @@ function ArticlePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { slug } = useParams();
+
+  const articleContainerRef = useRef(null);
 
   useEffect(() => {
     (async () => {
@@ -29,7 +32,17 @@ function ArticlePage() {
     })();
   }, [slug]);
 
-  // Generate article HTML content and remove first heading since it's already the title
+  useEffect(() => {
+    if (articleContainerRef?.current) {
+      const articleElement =
+        articleContainerRef.current.querySelectorAll("pre code");
+      console.log(articleElement);
+      articleElement.forEach((block) => {
+        hljs.highlightElement(block);
+      });
+    }
+  }, [articleContainerRef.current]); // Generate article HTML content and remove first heading since it's already the title
+
   useEffect(() => {
     let ignored = false;
     (async () => {
@@ -70,7 +83,10 @@ function ArticlePage() {
       <ArticleExtraInfo article={article} />
       <hr />
       <article className={styles.articleContainer}>
-        <div dangerouslySetInnerHTML={{ __html: articleHTML }}></div>
+        <div
+          ref={articleContainerRef}
+          dangerouslySetInnerHTML={{ __html: articleHTML }}
+        ></div>
       </article>
       <hr />
       <CommentSection articleId={article.id} />
