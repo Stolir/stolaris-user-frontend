@@ -21,7 +21,8 @@
   font-size: 0.9em;
 }
 
-.replyButton {
+.replyButton,
+.deleteButton {
   background: none;
   border: none;
   align-self: flex-start;
@@ -57,5 +58,5 @@ p.replyingText > span {
 
 .controlsContainer {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
 }

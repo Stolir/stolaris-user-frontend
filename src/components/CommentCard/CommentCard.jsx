@@ -56,7 +56,7 @@ function CommentCard({
           <p>{getDateString(comment.createdAt)}</p>
         </div>
         <Markdown>{comment.content}</Markdown>
-        <div className={styles.controlsCard}>
+        <div className={styles.controlsContainer}>
           {handleClick && (
             <button
               onClick={() => handleClick(comment.id)}
@@ -65,12 +65,12 @@ function CommentCard({
               <Reply />
             </button>
           )}
-          {user?.id && comment.userId === user.id && (
+          {user?.id === comment.userId && (
             <button
               onClick={() => {
                 setShowConfirm(true);
               }}
-              className={styles.replyButton}
+              className={styles.deleteButton}
             >
               <TrashSolid />
             </button>
