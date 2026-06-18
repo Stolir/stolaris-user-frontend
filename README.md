@@ -13,7 +13,7 @@
 
 ## 1. Introduction
 
-This project is a React-based web application designed to provide a user-facing interface using the [Stolaris Blog API](https://github.com/Stolir/stolaris-blog-api/). It allows users to browse articles, view author profiles, leave comments, and manage their own profiles. The application is built with a focus on responsiveness and a smooth user experience. To view this site refer to the [live preview](#8-live-preview)
+This project is a React-based web application designed to provide a user-facing interface using the [Stolaris Blog API](https://github.com/Stolir/stolaris-blog-api/). It allows users to browse articles, view author profiles, leave comments, and manage their own profiles. The application is built with a focus on responsiveness and a smooth user experience. To view this site refer to the [live preview](#8-live-preview) section.
 
 ## 2. Tech Stack
 
