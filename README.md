@@ -25,8 +25,6 @@ The project leverages modern web development technologies to deliver a robust an
 - **CSS Modules**: For scoped styling of components.
 - **React Router**: For declarative routing within the application.
 - **Tiptap**: A headless wrapper around ProseMirror, used for rich text editing capabilities (though primarily for rendering in the user frontend).
-- **Highlight.js**: For syntax highlighting in code blocks.
-- **Iconoir React**: A set of SVG icons for various UI elements.
 - **Dotenv**: For managing environment variables.
 
 ## 3. Project Structure
